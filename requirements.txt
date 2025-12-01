@@ -1,0 +1,8 @@
+streamlit
+streamlit-lottie
+pillow
+matplotlib
+seaborn
+pandas
+plotly
+pydeck
