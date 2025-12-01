@@ -10,7 +10,7 @@ import pydeck as pdk
 
 df = pd.read_csv('Cleaned_HDB_Resale_Prices.csv')
 
-st.set_page_config(page_title='My Webpage',page_icon=':tada:',layout='wide')
+st.set_page_config(page_title='Group 2',page_icon='💻',layout='wide')
 
 with st.container():
     left_col,right_col = st.columns(2)
