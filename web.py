@@ -12,24 +12,23 @@ df = pd.read_csv('Cleaned_HDB_Resale_Prices.csv')
 
 st.set_page_config(page_title='Group 2',page_icon='💻',layout='wide')
 
-with st.container():
-    col = st.columns([1,2,1])
-    middle = col[1]
-    
-    with middle:
-        st.header('Group 2')
-        st.subheader('Meet Our Team! :wave:')
-        
-        members = [
-            {'name': 'Darryl', 'role': 'Feature Engineer'},
-            {'name': 'Mabel', 'role': 'EDA Specialist'},
-            {'name': 'Isabel', 'role': 'Research Analyst'},
-            {'name': 'Chew', 'role': 'Data Engineer'},
-            {'name': 'Moe', 'role': 'Machine Learning Engineer'},
-        ]
+col = st.columns([1,2,1])
+middle = col[1]
 
-        for member in members:
-            st.write(f'- **{member['name']}**   ({member['role']})')
+with middle:
+    st.header('Group 2')
+    st.subheader('Meet Our Team! :wave:')
+    
+    members = [
+        {'name': 'Darryl', 'role': 'Feature Engineer'},
+        {'name': 'Mabel', 'role': 'EDA Specialist'},
+        {'name': 'Isabel', 'role': 'Research Analyst'},
+        {'name': 'Chew', 'role': 'Data Engineer'},
+        {'name': 'Moe', 'role': 'Machine Learning Engineer'},
+    ]
+
+    for member in members:
+        st.write(f'- **{member['name']}**   ({member['role']})')
 
     # with right_col:
     #     with open('team.json','r') as f:
