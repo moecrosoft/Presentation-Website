@@ -49,10 +49,9 @@ with middle:
         - Present out findings and insights
         '''
     )
-    with right_column:
-        with open('charts.json','r') as f:
-            chart_gif = json.load(f)
-        st_lottie(chart_gif,height=350,key='chart')
+    with open('charts.json','r') as f:
+        chart_gif = json.load(f)
+    st_lottie(chart_gif,height=350,key='chart')
 
 st.write('---')
 
