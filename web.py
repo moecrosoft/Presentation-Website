@@ -30,28 +30,25 @@ with middle:
     for member in members:
         st.write(f'- **{member['name']}**   ({member['role']})')
 
-    # with right_col:
-    #     with open('team.json','r') as f:
-    #         team_gif = json.load(f)
-    #     st_lottie(team_gif,height=350,key='team')
+    with right_col:
+        with open('team.json','r') as f:
+            team_gif = json.load(f)
+        st_lottie(team_gif,height=350,key='team')
 
-    # st.write('---')
+    st.write('---')
 
-with st.container():
-    
-    left_column, right_column = st.columns(2)
-    with left_column:
-        st.header('Workflow Overview')
-        st.write(
-            '''
-            - Data Cleaning on the original HDB Resale Prices dataset
-            - Do EDA to analyse the original dataset
-            - Feature Engineering to create new features
-            - Build ML models to predict HDB Resale Prices
-            - Do EDA on model feature importances
-            - Present out findings and insights
-            '''
-        )
+with middle:
+    st.header('Workflow Overview')
+    st.write(
+        '''
+        - Data Cleaning on the original HDB Resale Prices dataset
+        - Do EDA to analyse the original dataset
+        - Feature Engineering to create new features
+        - Build ML models to predict HDB Resale Prices
+        - Do EDA on model feature importances
+        - Present out findings and insights
+        '''
+    )
     with right_column:
         with open('charts.json','r') as f:
             chart_gif = json.load(f)
