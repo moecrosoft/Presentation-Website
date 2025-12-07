@@ -15,7 +15,7 @@ st.set_page_config(page_title='Group 2',page_icon='💻',layout='wide')
 col1,col2,col3 = st.columns([1,2,1])
 
 with col2:
-    st.markdown('#Group 2')
+    st.markdown('# Group 2')
     st.subheader('Meet Our Team! :wave:')
     
     members = [
