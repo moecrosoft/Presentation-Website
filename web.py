@@ -28,15 +28,14 @@ with col2:
 
     for member in members:
         st.write(f'- **{member['name']}**   ({member['role']})')
-
-with col3:
-    with open('team.json','r') as f:
-        team_gif = json.load(f)
-    st_lottie(team_gif,height=350,key='team')
+        
+st.write('---')
+# with col3:
+#     with open('team.json','r') as f:
+#         team_gif = json.load(f)
+#     st_lottie(team_gif,height=350,key='team')
 
 with col2:
-    st.write('---')
-
     st.subheader('Workflow Overview')
     st.write(
         '''
@@ -48,10 +47,10 @@ with col2:
         - Present out findings and insights
         '''
     )
-with col3:
-    with open('charts.json','r') as f:
-        chart_gif = json.load(f)
-    st_lottie(chart_gif,height=350,key='chart')
+# with col3:
+#     with open('charts.json','r') as f:
+#         chart_gif = json.load(f)
+#     st_lottie(chart_gif,height=350,key='chart')
 
 st.write('---')
 
