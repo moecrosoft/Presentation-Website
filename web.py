@@ -15,9 +15,8 @@ st.set_page_config(page_title='Group 2',page_icon='💻',layout='wide')
 with st.container():
     left_col,right_col = st.columns(2)
     with left_col:
-    #st.subheader('Hi, I am Moe :wave:')
-        st.title('Group 2 Internal Project')
-        st.subheader('Meet Our Team :wave:')
+        st.title('Group 2')
+        st.subheader('Meet Our Team! :wave:')
         
         members = [
             {'name': 'Darryl', 'role': 'Feature Engineer'},
@@ -44,12 +43,12 @@ with st.container():
         st.header('Building ML Models to predict HDB Resale Prices')
         st.write(
             '''
-            - Do Data Cleaning and EDA analysis on HDB Resale Prices dataset
-            - Do Feature Engineering to create new features
-            - Build Linear Regression and Random Forest models to predict HDB Resale Prices
-            - Analyze model performance and feature importances
-            - Present findings and insights through visualizations
-            - Answer Problem Statements
+            - Data Cleaning on the original HDB Resale Prices dataset
+            - Do EDA to analyse the original dataset
+            - Feature Engineering to create new features
+            - Build ML models to predict HDB Resale Prices
+            - Do EDA on model feature importances
+            - Present out findings and insights
             '''
         )
     with right_column:
