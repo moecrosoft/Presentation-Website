@@ -53,7 +53,7 @@ with col2:
 #         chart_gif = json.load(f)
 #     st_lottie(chart_gif,height=350,key='chart')
 
-st.write('---')
+st.markdown("<hr style='border: 2px solid #bbb;'>", unsafe_allow_html=True)
 
 
 # Create simple feature categories based on naming patterns
@@ -108,7 +108,7 @@ with st.container():
         - Less mature towns rely on locational attributes to maintain value
         ''')
         
-st.write('---')   
+st.markdown("<hr style='border: 2px solid #bbb;'>", unsafe_allow_html=True) 
 
 with st.container():
 
@@ -158,7 +158,8 @@ with st.container():
         st.write('')
         st.write('')
         st.write('- Year is also a top feature in our ML model which shows that market inflation (macroeconomic factors) contributes greatly to resale prices and not just flat attributes.')
-        
+
+st.markdown("<hr style='border: 2px solid #bbb;'>", unsafe_allow_html=True)
 
 # with st.container():
 #     left_col,right_col = st.columns(2)
