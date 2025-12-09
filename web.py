@@ -88,9 +88,10 @@ with st.container():
         palette="magma"
         )
 
-        ax.set_title('Distribution of Resale Price')
-        ax.set_xlabel('Resale Price ($)')
-        ax.set_ylabel('Density')
+        ax.set_title('Distribution of Resale Price',fontsize=20)
+        ax.set_xlabel('Resale Price ($)',fontsize=16)
+        ax.set_ylabel('Density',fontsize=16)
+        ax.tick_params(axis='both',labelsize=14)
         ax.legend()
     
         st.pyplot(fig,use_container_width=False)
