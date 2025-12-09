@@ -31,7 +31,7 @@ with col2:
     for member in members:
         st.write(f'- **{member['name']}**   ({member['role']})')
         
-    st.write('---')
+    st.markdown("<hr style='border: 2px solid #bbb;'>", unsafe_allow_html=True)
 # with col3:
 #     with open('team.json','r') as f:
 #         team_gif = json.load(f)
