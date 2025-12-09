@@ -142,6 +142,9 @@ with st.container():
         st.write('')
         st.write('')
         st.write('')
+        st.write('')
+        st.write('')
+        st.write('')
         st.subheader('Year of HDB sale and Resale Price')
         st.write('''
         - There is a sharp jump in the resale prices of HDBs from 2019-2020 which coincides with the COVID-19 pandemic. 
