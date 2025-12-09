@@ -121,25 +121,22 @@ with st.container():
     left_col,right_col = st.columns(2)
     with left_col:
         fig, ax = plt.subplots(figsize=(18,9))
-        quarterly.plot(marker='o')
-
-        ax.set_title('Average Resale Price by Quarter',fontsize=20)
-        ax.set_xlabel('Year - Quarter',fontsize=16)
-        ax.set_ylabel('Average Resale Price ($)',fontsize=16)
-        ax.tick_params(axis='both',labelsize=14)
-        ax.legend()
+        quarterly.plot(marker='o', ax=ax)
+        ax.set_title('Average Resale Price by Quarter', fontsize=20)
+        ax.set_xlabel('Year - Quarter', fontsize=16)
+        ax.set_ylabel('Average Resale Price ($)', fontsize=16)
+        ax.tick_params(axis='both', labelsize=14)
+        st.pyplot(fig, use_container_width=True)
     
-        st.pyplot(fig,use_container_width=False)
-
-        sns.barplot(data=top10, x='importance', y='feature', hue = 'feature', palette='viridis')
+        # Top 10 features barplot
         fig1, ax1 = plt.subplots(figsize=(18,9))
-        ax1.set_title('Top 10 Most Important Features Influencing Resale Prices',fontsize=20)
-        ax1.set_xlabel('Importance Score',fontsize=16)
-        ax1.set_ylabel('Feature',fontsize=16)
-        ax1.tick_params(axis='both',labelsize=14)
-        ax1.legend()
-    
-        st.pyplot(fig1,use_container_width=False)
+        sns.barplot(data=top10, x='importance', y='feature', hue='feature', palette='viridis', dodge=False, ax=ax1)
+        ax1.set_title('Top 10 Most Important Features Influencing Resale Prices', fontsize=20)
+        ax1.set_xlabel('Importance Score', fontsize=16)
+        ax1.set_ylabel('Feature', fontsize=16)
+        ax1.tick_params(axis='both', labelsize=14)
+        ax1.legend().remove()  # optional, removes redundant legend for features
+        st.pyplot(fig1, use_container_width=True)
 
     with right_col:
         st.subheader('Year of HDB sale and Resale Price')
