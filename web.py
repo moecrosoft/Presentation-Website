@@ -86,14 +86,14 @@ with st.container():
         dodge=False,
         legend=False,
         palette="magma"
-    )
+        )
 
-    ax.set_title('Distribution of Resale Price')
-    ax.set_xlabel('Resale Price ($)')
-    ax.set_ylabel('Density')
-    ax.legend()
-
-    st.pyplot(fig,use_container_width=False)
+        ax.set_title('Distribution of Resale Price')
+        ax.set_xlabel('Resale Price ($)')
+        ax.set_ylabel('Density')
+        ax.legend()
+    
+        st.pyplot(fig,use_container_width=False)
 
     with right_col:
         st.subheader('Estate Age vs Depreciation')
@@ -104,7 +104,7 @@ with st.container():
         Less mature towns rely on locational attributes to maintain value
         ''')
         
-     st.write('---')   
+ st.write('---')   
         
 
 # with st.container():
