@@ -8,6 +8,8 @@ import pandas as pd
 import plotly.figure_factory as ff
 import pydeck as pdk
 
+df = pd.read_csv("HDB_Resale_Prices_Data_Engineered.csv")
+
 df_imp = pd.read_csv("HDB_Resale_Prices_Features_Importances.csv")
 
 st.set_page_config(page_title='Group 2',page_icon='💻',layout='wide')
@@ -107,6 +109,33 @@ with st.container():
         ''')
         
 st.write('---')   
+
+with st.container():
+
+    df['year_quarter'] = df['year'].astype(str) + " Q" + df['quarter'].astype(str)
+
+    quarterly = df.groupby(['year', 'quarter'])['resale_price'].mean()
+    
+    left_col,right_col = st.columns(2)
+    with left_col:
+        fig, ax = plt.subplots(figsize=(18,9))
+        quarterly.plot(marker='o')
+
+        ax.set_title('Average Resale Price by Quarter',fontsize=20)
+        ax.set_xlabel('Year - Quarter',fontsize=16)
+        ax.set_ylabel('Average Resale Price ($)',fontsize=16)
+        ax.tick_params(axis='both',labelsize=14)
+        ax.legend()
+    
+        st.pyplot(fig,use_container_width=False)
+
+    with right_col:
+        st.subheader('Year of HDB sale and Resale Price')
+        st.write('''
+        - There is a sharp jump in the resale prices of HDBs from 2019-2020 which coincides with the COVID-19 pandemic. 
+        - Construction delays led to a surge in demand of resale flats: BTOs got delayed (92 projects) which pushed people towards resale flats
+        - Year is also a top feature in our ML model which shows that market inflation (macroeconomic factors) contributes greatly to resale prices and not just flat attributes.
+        ''')
         
 
 # with st.container():
