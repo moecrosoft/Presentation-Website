@@ -8,7 +8,7 @@ import pandas as pd
 import plotly.figure_factory as ff
 import pydeck as pdk
 
-df = pd.read_csv('Cleaned_HDB_Resale_Prices.csv')
+df_imp = pd.read_csv("HDB_Resale_Prices_Features_Importances.csv")
 
 st.set_page_config(page_title='Group 2',page_icon='💻',layout='wide')
 
@@ -53,6 +53,50 @@ with col2:
 
 st.write('---')
 
+
+    # Create simple feature categories based on naming patterns
+def assign_category(x):
+    x = x.lower()
+    if 'dist' in x or 'cbd' in x or 'mall' in x or 'mrt' in x:
+        return 'Amenities / Accessibility'
+    elif 'flat' in x or 'floor' in x or 'sq' in x:
+        return 'Flat Characteristics'
+    elif 'lease' in x or 'commence' in x:
+        return 'Lease Attributes'
+    elif 'town' in x:
+        return 'Town / District'
+    elif 'year' in x:
+        return 'Temporal Factors'
+    else:
+        return 'Other'
+
+df_imp['category'] = df_imp['feature'].apply(assign_category)
+
+# Group importance scores by category
+df_group = df_imp.groupby('category')['importance'].sum().sort_values(ascending=False)
+
+with st.container():
+    left_col,right_col = st.columns(2)
+    with left_col:
+        fig, ax = plt.subplots(figsize=(12,6))
+        sns.barplot(
+        x=df_group.values,
+        y=df_group.index,
+        hue=df_group.index,
+        dodge=False,
+        legend=False,
+        palette="magma"
+    )
+
+    ax.set_title('Distribution of Resale Price')
+    ax.set_xlabel('Resale Price ($)')
+    ax.set_ylabel('Density')
+    ax.legend()
+
+    st.pyplot(fig,use_container_width=False)
+        
+        
+
 with st.container():
     left_col,right_col = st.columns(2)
     with left_col:
@@ -81,19 +125,20 @@ with st.container():
             ax=ax
         )
 
-        ax.set_title('Distribution of Resale Price')
-        ax.set_xlabel('Resale Price ($)')
-        ax.set_ylabel('Density')
+        ax.set_title('Total Feature Importance by Category')
+        ax.set_xlabel('Total Importance Score')
+        ax.set_ylabel('Category')
         ax.legend()
 
         st.pyplot(fig,use_container_width=False)
+        
     with right_col:
-        st.subheader('Distribution of Resale Price')
+        st.subheader('Estate Age vs Depreciation')
         st.write('''
-        The histogram and KDE curve on the left illustrate the distribution of resale prices for HDB flats in the dataset. 
-        From the plot, we can observe that the majority of flats have resale prices ranging from approximately $100,000 to $500,000, with a peak around $200,000 to $300,000. 
-        This indicates that most flats fall within this price range, which is typical for public housing in Singapore. 
-        The distribution also shows a right skew, suggesting that there are fewer high-priced flats with resale prices exceeding $800,000.
+        The model shows that lease related features do influence resale prices, but less strongly than flat attributes such as floor area and accessibility. According to our research, HDB flats suffer a sharp depreciation in resale value around the 35 year mark of their lease, however this depreciation is not uniform across all towns. 
+        Depreciation in resale value can be mediated by Location / Accessibility
+        Amenities / Accessibility has greater importance resale price of HDB flat
+        Less mature towns rely on locational attributes to maintain value
         ''')
 
 st.write('---')
