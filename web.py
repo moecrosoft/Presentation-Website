@@ -114,6 +114,8 @@ with st.container():
 
     df['year_quarter'] = df['year'].astype(str) + " Q" + df['quarter'].astype(str)
 
+    top10 = df_imp.head(10)
+
     quarterly = df.groupby(['year', 'quarter'])['resale_price'].mean()
     
     left_col,right_col = st.columns(2)
@@ -128,6 +130,16 @@ with st.container():
         ax.legend()
     
         st.pyplot(fig,use_container_width=False)
+
+        sns.barplot(data=top10, x='importance', y='feature', hue = 'feature', palette='viridis')
+        fig1, ax1 = plt.subplots(figsize=(18,9))
+        ax1.set_title('Top 10 Most Important Features Influencing Resale Prices',fontsize=20)
+        ax1.set_xlabel('Importance Score',fontsize=16)
+        ax1.set_ylabel('Feature',fontsize=16)
+        ax1.tick_params(axis='both',labelsize=14)
+        ax1.legend()
+    
+        st.pyplot(fig1,use_container_width=False)
 
     with right_col:
         st.subheader('Year of HDB sale and Resale Price')
