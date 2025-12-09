@@ -78,7 +78,7 @@ df_group = df_imp.groupby('category')['importance'].sum().sort_values(ascending=
 with st.container():
     left_col,right_col = st.columns(2)
     with left_col:
-        fig, ax = plt.subplots(figsize=(12,6))
+        fig, ax = plt.subplots(figsize=(18,9))
         sns.barplot(
         x=df_group.values,
         y=df_group.index,
