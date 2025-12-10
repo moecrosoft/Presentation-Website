@@ -141,7 +141,7 @@ with st.container():
         # Rename Labels for Display Only 
         corr = corr.rename(index=label_mapping, columns=label_mapping)
 
-        fig, ax = plt.subplots(figsize=(18,9))
+        fig, ax = plt.subplots(figsize=(10,5))
         sns.heatmap(corr, annot=True, cmap='Blues', fmt=".2f", square=True)
         ax.set_title("Heatmap of Most Influential Variables", fontsize=20)
         ax.set_xticklabels(ax.get_xticklabels(), rotation=45,ha='right')
@@ -154,6 +154,39 @@ with st.container():
         - Strong correlation between floor area and resale price
         - Top 10 features that affect resale price include lease attributes, accessibility, and flat characterisitics
         ''')
+
+with st.container():
+    left_col,right_col = st.columns(2)
+    with left_col:
+        fig, ax = plt.subplots(figsize=(18,9))
+        sns.histplot(
+        df['floor_area_sqm'],
+        bins='fd',       
+        stat='density',
+        color='skyblue',
+        alpha=0.6,
+        label='Histogram'
+        )
+    
+        sns.kdeplot(
+            df['floor_area_sqm'],
+            color='red',
+            linewidth=2,
+            label='KDE Curve'
+        )
+
+        ax.set_title('Distribution of Floor Area (sqm)', fontsize=20)
+        ax.set_xlabel('Floor Area (sqm)', fontsize=16)
+        ax.set_ylabel('Density', fontsize=16)
+        st.pyplot(fig, use_container_width=True)
+    with right_col:
+        st.subheader('Why is this important?')
+        st.write('''
+        - Policies and prediction of HDB resale prices should focus only on the top features
+        - Not all features contribute to resale price equally
+        ''')
+
+st.markdown("<hr style='border: 2px solid #bbb;'>", unsafe_allow_html=True)
 
 # Create simple feature categories based on naming patterns
 def assign_category(x):
