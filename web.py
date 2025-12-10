@@ -166,8 +166,8 @@ with st.container():
     with left_col:
         fig, ax = plt.subplots(figsize=(18,9))
         sns.histplot(
-        df['resale_price'],
-        bins='fd',
+        df['floor_area_sqm'],
+        bins='fd',       
         stat='density',
         color='skyblue',
         alpha=0.6,
@@ -175,7 +175,7 @@ with st.container():
         )
     
         sns.kdeplot(
-            df['resale_price'],
+            df['floor_area_sqm'],
             color='red',
             linewidth=2,
             label='KDE Curve'
