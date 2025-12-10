@@ -119,6 +119,40 @@ with st.container():
 
 st.markdown("<hr style='border: 2px solid #bbb;'>", unsafe_allow_html=True)
 
+with st.container():
+    left_col,right_col = st.columns(2)
+    with left_col:
+        important_cols = ['resale_price','floor_area_sqm','remaining_lease_years','lease_age','storey_avg']
+
+        numeric_df = df[important_cols]
+        
+        # Create Label Mapping for Prettier Heatmap Labels 
+        label_mapping = {
+            'resale_price': 'Resale Price',
+            'floor_area_sqm': 'Floor Area (sqm)',
+            'remaining_lease_years': 'Remaining Lease (Years)',
+            'lease_age': 'Lease Age',
+            'storey_avg': 'Storey Average'
+        }
+        
+        # Compute Correlation Matrix
+        corr = numeric_df.corr()
+        
+        # Rename Labels for Display Only 
+        corr = corr.rename(index=label_mapping, columns=label_mapping)
+
+        sns.heatmap(corr, annot=True, cmap='Blues', fmt=".2f", square=True)
+        ax.set_title("Heatmap of Most Influential Variables", fontsize=20)
+        ax.set_xticklabels(ax.get_xticklabels(), rotation=45,ha='right')
+        ax.set_yticklabels(ax.get_yticklabels(), rotation=0, va='center')
+        st.pyplot(fig, use_container_width=True)
+
+    with right_col:
+        st.subheader('What does this tell us?')
+        st.write('''
+        - Strong correlation between floor area and resale price
+        - Top 10 features that affect resale price include lease attributes, accessibility, and flat characterisitics
+        ''')
 
 # Create simple feature categories based on naming patterns
 def assign_category(x):
