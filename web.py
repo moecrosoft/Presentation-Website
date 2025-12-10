@@ -266,6 +266,8 @@ with st.container():
         - For flats above 30 years of age, depreciation due to lease loss slows
         - Could be due to Government Schemes, Locational advantages and Home Improvement Programmes
         ''')
+st.write('')
+st.write('')
         
 with st.container():
     left_col,right_col = st.columns(2)
@@ -313,6 +315,8 @@ with st.container():
         - For flats above 30 years of age, depreciation due to lease loss slows
         - Could be due to Government Schemes, Locational advantages and Home Improvement Programmes
         ''')
+        
+st.markdown("<hr style='border: 2px solid #bbb;'>", unsafe_allow_html=True)
 
 # with st.container():
 #     left_col,right_col = st.columns(2)
