@@ -143,7 +143,7 @@ with st.container():
 
         fig, ax = plt.subplots(figsize=(10,5))
         sns.heatmap(corr, annot=True, cmap='Blues', fmt=".2f", square=True)
-        ax.set_title("Heatmap of Most Influential Variables", fontsize=20)
+        ax.set_title("Heatmap of Most Influential Variables\n", fontsize=20)
         ax.set_xticklabels(ax.get_xticklabels(), rotation=45,ha='right')
         ax.set_yticklabels(ax.get_yticklabels(), rotation=0, va='center')
         st.pyplot(fig, use_container_width=True)
@@ -187,6 +187,26 @@ with st.container():
         ''')
 
 st.markdown("<hr style='border: 2px solid #bbb;'>", unsafe_allow_html=True)
+
+with st.container():
+    left_col,right_col = st.columns(2)
+    with left_col:
+        fig1, ax1 = plt.subplots(figsize=(18,9))
+        sns.barplot(data=top10, x='importance', y='feature', hue='feature', palette='viridis', dodge=False, ax=ax1)
+        ax1.set_title('Top 10 Most Important Features Influencing Resale Prices', fontsize=20)
+        ax1.set_xlabel('Importance Score', fontsize=16)
+        ax1.set_ylabel('Feature', fontsize=16)
+        ax1.tick_params(axis='both', labelsize=14)
+        ax1.legend().remove()  # optional, removes redundant legend for features
+        st.pyplot(fig1, use_container_width=True)
+    with right_col:
+        st.subheader('Accessibility Impacts on Resale Value')
+        st.write('- The resale market rewards accessibility disproportionately.')
+        st.write('###### **Time to CBD is ranked 2nd for features that influence resale prices**')
+        st.write('''
+        - Accessibility is a primary factor in resale value
+        - A 5-10 minute reduction in travel time is worth much more than lease attibutes or ammenities in the surrounding area
+        ''')
 
 # Create simple feature categories based on naming patterns
 def assign_category(x):
