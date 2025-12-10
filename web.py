@@ -319,6 +319,10 @@ with st.container():
         
 st.markdown("<hr style='border: 2px solid #bbb;'>", unsafe_allow_html=True)
 
+with st.container():
+    img3 = Image.open('Photo_3.jpg')
+    st.image(img1,caption='lease_commence_year and remaining_lease_years are in our top features',use_column_width=True)
+
 # with st.container():
 #     left_col,right_col = st.columns(2)
 #     with left_col:
