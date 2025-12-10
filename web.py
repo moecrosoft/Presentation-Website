@@ -212,59 +212,6 @@ with st.container():
         - Accessibility is a primary factor in resale value
         - A 5-10 minute reduction in travel time is worth much more than lease attibutes or ammenities in the surrounding area
         ''')
-
-
-# Create simple feature categories based on naming patterns
-# def assign_category(x):
-#     x = x.lower()
-#     if 'dist' in x or 'cbd' in x or 'mall' in x or 'mrt' in x:
-#         return 'Amenities / Accessibility'
-#     elif 'flat' in x or 'floor' in x or 'sq' in x:
-#         return 'Flat Characteristics'
-#     elif 'lease' in x or 'commence' in x:
-#         return 'Lease Attributes'
-#     elif 'town' in x:
-#         return 'Town / District'
-#     elif 'year' in x:
-#         return 'Temporal Factors'
-#     else:
-#         return 'Other'
-
-# df_imp['category'] = df_imp['feature'].apply(assign_category)
-
-# # Group importance scores by category
-# df_group = df_imp.groupby('category')['importance'].sum().sort_values(ascending=False)
-
-# with st.container():
-#     left_col,right_col = st.columns(2)
-#     with left_col:
-#         fig, ax = plt.subplots(figsize=(18,9))
-#         sns.barplot(
-#         x=df_group.values,
-#         y=df_group.index,
-#         hue=df_group.index,
-#         dodge=False,
-#         legend=False,
-#         palette="magma"
-#         )
-
-#         ax.set_title('Distribution of Resale Price',fontsize=20)
-#         ax.set_xlabel('Resale Price ($)',fontsize=16)
-#         ax.set_ylabel('Density',fontsize=16)
-#         ax.tick_params(axis='both',labelsize=14)
-#         ax.legend()
-    
-#         st.pyplot(fig,use_container_width=False)
-
-#     with right_col:
-#         st.subheader('Estate Age vs Depreciation')
-#         st.write('''
-#         - The model shows that lease related features do influence resale prices, but less strongly than flat attributes such as floor area and accessibility.
-#         - According to our research, HDB flats suffer a sharp depreciation in resale value around the 35 year mark of their lease, however this depreciation is not uniform across all towns. 
-#         ##### **Depreciation in resale value can be mediated by Location / Accessibility**
-#         - Amenities / Accessibility has greater importance resale price of HDB flat
-#         - Less mature towns rely on locational attributes to maintain value
-#         ''')
         
 st.markdown("<hr style='border: 2px solid #bbb;'>", unsafe_allow_html=True) 
 
@@ -422,11 +369,14 @@ st.markdown("<hr style='border: 2px solid #bbb;'>", unsafe_allow_html=True)
 col1,col2,col3 = st.columns([1,2,1])
 
 with col2:
-    st.subheader('Conclusion')
-    st.write('''
-    - Although we have reached a high prediction accuracy, HDB resale price is more nuanced than what has been discussed in this model. 
-    - There are many other factors such as Government Regulations, age distribution in certain towns as well as the priorities of the buyers, that can greatly impact the resale value as well as the percieved value of a HDB.
-    ''')
+    # st.subheader('Conclusion')
+    # st.write('''
+    # - Although we have reached a high prediction accuracy, HDB resale price is more nuanced than what has been discussed in this model
+    # - There are many other factors such as Government Regulations, age distribution in certain towns as well as the priorities of the buyers, that can greatly impact the resale value as well as the percieved value of a HDB
+    # ''')
+    st.markdown('# Conclusion')
+    st.subheader('Although we have reached a high prediction accuracy, HDB resale price is more nuanced than what has been discussed in this model')
+    st.subheader('There are many other factors such as Government Regulations, age distribution in certain towns as well as the priorities of the buyers, that can greatly impact the resale value as well as the percieved value of a HDB')
 
 # with st.container():
 #     left_col,right_col = st.columns(2)
