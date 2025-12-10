@@ -270,9 +270,17 @@ with st.container():
 with st.container():
     left_col,right_col = st.columns(2)
     with left_col:
-        img2 = Image.open('Photo_2.jpg')
-        img2 = img2.resize((300,300))
-        st.image(img2,use_column_width=True)
+        fig, ax = plt.subplots(figsize=(10,5))
+        sns.heatmap(
+        corr_matrix_pretty, 
+        annot=True, 
+        cmap='Blues', 
+        fmt=".2f", 
+        square=True
+        )
+        ax.set_title("Correlation Between Important Features and Resale Price", fontsize=20)
+        st.pyplot(fig, use_container_width=True)
+        
     with right_col:
         st.subheader('However, their correlation to resale value is weaker than floor area and year of sale')
         st.write('''
