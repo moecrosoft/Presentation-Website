@@ -106,16 +106,18 @@ with col2:
     img = Image.open('ML.jpg')
     st.image(img,use_column_width=True)
 
+    st.subheader('The HDB Resale Market ')
+    st.write('The hdb resale market is dominated by a few well defined structural factors')
+    st.write('')
+    st.write('')
+    
+    img3 = Image.open('Photo_3.jpg')
+    st.image(img3)
+
 # with col3:
 #     with open('charts.json','r') as f:
 #         chart_gif = json.load(f)
 #     st_lottie(chart_gif,height=350,key='chart')
-
-st.markdown("<hr style='border: 2px solid #bbb;'>", unsafe_allow_html=True)
-
-with st.container():
-    img3 = Image.open('Photo_3.jpg')
-    st.image(img3)
 
 st.markdown("<hr style='border: 2px solid #bbb;'>", unsafe_allow_html=True)
 
